@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage{graphicx}
+% \usepackage{float}
+\title{Report on ECG Heartbeat Categorization Dataset}
+\author{BI12-263 Chau Phan Phuong Mai}
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+\noindent The medical field utilizes a wide range of imaging techniques, including nuclear medicine, ultrasound, and X-ray. Doctors select the most appropriate imaging modality based on the specific diagnostic needs. These techniques capture biomedical signals from the human body in one, two, or even more dimensions. Examples include electroencephalogram (EEG) for brain activity, electromyogram (EMG) for muscle activity, and oxygen saturation (SpO2) for blood oxygen levels. This particular study focuses on electrocardiogram (ECG) signals, which originate from the heart. \\
+
+\noindent An electrocardiogram (ECG) is a test that records the electrical activity of your heart, particularly its rhythm. The ECG captures this activity as a series of waves displayed over time on a one-dimensional graph. This simple test offers valuable advantages in medical monitoring. By analyzing the ECG signal, doctors can detect various heart-related conditions such as arrhythmias, myocardial infarction (heart attack), and more.\\
+
+\section{Dataset}
+\noindent To delve deeper into heartbeat classification, this study utilizes the ECG Heartbeat Categorization Dataset from Kaggle. This dataset leverages data from two well-regarded sources: the MIT-BIH Arrhythmia Dataset and the PTB Diagnostic ECG Database. However, in this report, we will focus solely on data from the PTB Diagnostic ECG Database. \\
+
+\noindent The ECG Heartbeat Categorization Dataset records heartbeat signal shapes for two categories: normal and abnormal (including arrhythmias and myocardial infarction). The dataset contains 14,552 preprocessed and classified heartbeat signals, with 10,505 belonging to normal cases and 4,045 representing abnormal heart rhythms. Each heartbeat is described by 187 features capturing its unique characteristics. To prepare for building a classification model, the dataset was split into 80\% for training and 20\% for testing. This split ensures the model learns from a representative portion of the data while reserving unseen data for evaluation and generalizability assessment. \\
+
+\section{Method}
+
+\noindent Given the binary nature of the classification task (normal vs. abnormal heartbeat), a Binomial Logistic Regression model was chosen for this analysis. \\
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{logistic.png}
+    \caption{Logistic Regression model}
+    \label{fig:enter-label}
+\end{figure}
+
+\noindent The logistic model measures the impact of multiple variables (in this cases is 187 features) with the given outcome (which class). This means it based in historical data in training set then score new cases on their probability of falling into one of two outcome categories. \\
+
+\subsection{Sigmoid Function} 
+The Binomial Logistic Regression model relies on a mathematical function called the sigmoid function. This function acts as a translator, transforming the model's initial predictions into probabilities. Essentially, it takes any real number and squeezes it between 0 and 1, perfectly aligning with the probability range of 0 (normal) to 1 ().
+
+\begin{equation}h_ \theta (x) =  \frac{\mathrm{1} }{\mathrm{1} + e^- \theta^Tx }  \end{equation} 
+
+in which: 
+
+x: independent input features
+
+$\theta^Tx$: weights and bias 
+
+Following the probability calculation, the model employs a threshold value to classify the sample. Any data point exceeding the threshold is categorized as one class, while those falling below it are assigned to the other class.
+
+\subsection{Optimizer} 
+To achieve optimal performance, the model utilizes a technique called maximum likelihood estimation during training. This technique essentially helps the model identify the best-fitting coefficients for its internal calculations.  In simpler terms, the model iteratively adjusts these coefficients to minimize the discrepancy between its predicted probabilities  and the actual classifications present in the training data.
+
+\subsection{Model Evaluation} 
+After training the logistic regression model, its performance is evaluated by using accuracy metrics in test data. 
+ \begin{equation} Accuracy = \frac{TP+TN}{TP+TN+FP+FN}\end{equation}
+
+ The accuracy from my logistic model is 0.83, which means model have quite good performance. However, there are some ways to pontentially improve the model's accuracy:
+
+- Dimensionality Reduction with PCA: reduce the number of features (from 187 currently) while retaining the most important information for classification.
+
+- Deep Learning Classifiers: might be able to learn more complex patterns from the ECG signal data.
+
+\end{document}
