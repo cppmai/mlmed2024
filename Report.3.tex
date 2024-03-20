@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage{graphicx}
+% \usepackage{float}
+\title{Report on COVID-QU-Ex Dataset}
+\author{BI12-263 Chau Phan Phuong Mai}
+\begin{document}
+\maketitle
+
+\section{Introduction}
+\noindent Radiological Technologies is widely used in medical field to assist doctor to see inside in human body. It contains some kind of medical images such as X-ray, Computed Tomography (CT), Mammography, etc. Out of them, X-ray is the most important tools in modern medicine. \\
+\noindent The discovery of X rays in 1985 was the beginning of a revolutionary change in our understanding of physical word. Using radiation which has wavelengths ranging from 0.01 to 10 nanometers, X-ray provides images of the bones, organs, soft tissue and vessels that comprise the human body. In the medical domain, the X-ray can assist the doctor to detect to do some tasks: analyse the structures of composite bodies; detect or even destroy the abnormal tissues.  \\
+\noindent In this report, I will explore the Lung X-ray images related to COVID-19 and use U-Net model to segmentation lung location.\\
+
+\section{Dataset}
+
+\noindent The COVID-QU-Ex Database from Kaggle was used in this report. It has complied by Qatar University. There are 33 920 chest X-ray (CXR) images and their ground-truth lung segmentation mask which includes: 11 956 COVID\_19, 11 263 Non-COVID infections (Viral or Bacterial Pneumonia) and 10 701 Normal. \\
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\linewidth]{lung.png}
+    \caption{Examples of the dataset.}
+    \label{fig:enter-label}
+\end{figure}
+\noindent
+It is clear from the Figure 1. that people with pulmonary disease often have a high opacity, which makes segmentation of lung from chest X-rays more difficult. 
+
+\section{Method}
+
+\noindent the U\_Net structure is able to extract the features and spatial characteristics of images of chest region, which helps the neural network to segment the lung regions from chest images.  \\
+
+\end{document}
